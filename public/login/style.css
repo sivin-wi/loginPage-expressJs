@@ -1,0 +1,66 @@
+body{
+    background-image: url('https://images.unsplash.com/photo-1604342427523-189b17048839?q=80&w=1827&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+main{
+    height: 100vh;
+    width: 100%;
+}
+
+form{
+    width: 385px;
+    height: 380px;
+    background-color: transparent;
+    position: relative;
+}
+
+form > .formBackground{
+    background-color: #05000056;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    z-index: -1;
+    filter: blur(2px);
+    border-radius: inherit;
+    box-shadow: 3.5px 5px 8px 5px rgb(107, 110, 110);
+}
+
+
+form > .formFloatingEmail {
+    width: 88%;
+}
+
+
+form > .formFloatingEmail > input[type="email"]{
+    background-color: rgba(58, 52, 52, 0.436);
+    border: none;
+    color: #fff;
+}
+
+form > .formFloatingEmail > label{
+    color: #60a6b5 !important;
+}
+
+
+form > .formFloatingPassword{
+    width: 88%;
+}
+
+form > .formFloatingPassword > input[type="password"]{
+    background-color: rgba(58, 52, 52, 0.436);
+    border: none;
+    color: #fff;
+}
+
+form > .formFloatingPassword > label{
+    color: #60a6b5 !important;
+}
+
+
+form > .button > .btn{
+    padding: 11px 120px;
+    background-color: #60a6b5;
+    color: #fff;
+}
