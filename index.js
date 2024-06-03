@@ -26,13 +26,14 @@ app.get('/',userLogin,function(req,res){
     res.render(path.join(__dirname+'/public/home/index.ejs'),{emailId:req.session.emailId,password:req.session.password});
 })
 
-app.get('/login',preventAutoLogout,function(req,res){
-   if(req.session.status){
+app.get('/login', preventAutoLogout, function(req, res) {
+  if (req.session.status) {
     res.redirect('/');
-   }else{
-    res.render(path.join(__dirname+'/public/login/index.ejs'));
-   }
-})
+  } else {
+    res.setHeader('Cache-Control', 'no-store');
+    res.render(path.join(__dirname + '/public/login/index.ejs'));
+  }
+});
 
 app.get('/logout',function(req,res){
     req.session.destroy(function(err){
