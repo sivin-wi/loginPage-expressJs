@@ -11,8 +11,8 @@ app.use(express.urlencoded({extended:true}));
 // session config
 app.use(session({
     secret: 'seCreTKey99',
-    resave: true,
-    saveUninitialized:true,
+    resave: false,
+    saveUninitialized: false,
     cookie: {
         maxAge:20000,
         httpOnly:true,
@@ -38,11 +38,16 @@ app.get('/login', preventAutoLogout, function(req, res) {
 app.get('/logout',function(req,res){
     req.session.destroy(function(err){
         if(!(err)){
-             res.redirect('/')
+             res.clearCookie('connect.sid')
+             res.redirect('/');
         }else{
-            res.send("error logging out");
+            return res.status(500).send('Failed to destroy session');
         }
     })
+})
+
+app.get('/home',function(req,res){
+    res.send('This is home');
 })
 
 app.post('/auth',auth,function(req,res){
@@ -78,5 +83,9 @@ function preventAutoLogout(req,res,next){
             return next()
         }     
 }
+
+app.use(function(req,res,next){
+    res.status(404).send("not Found");
+})
 
 app.listen(process.env.PORT||8080);
